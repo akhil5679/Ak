@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('../img2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 14px;
+  font-family: sans-serif;
+  color: rgb(255, 255, 255);
+  overflow: auto;
+}
+
+a {
+  color: white;
+  font-size: 14px;
+}
+
+#main {
+  width: 100%;
+}
+
+#wrap {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+  margin-top: 10px;
+}
+
+#text {
+  width: 100%;
+  max-width: 272px;
+  height: auto;
+  left: 30%;
+  top: 70%;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+#code {
+  display: none;
+  color: rgb(196, 255, 255);
+  font-size: 16px;
+  margin-top: 20px;
+  line-height: 25px;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+#clock-box {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translateX(-50%);
+  font-size: 25px;
+  display: none;
+}
+
+#clock-box a {
+  font-size: 25px;
+  text-decoration: none;
+}
+
+#clock {
+  margin-left: -100px;
+  margin-bottom: -65px;
+  animation: animate_3 1s ease-in-out infinite alternate;
+  font-family: "Moon Dance", serif;
+}
+
+#clock .digit {
+  font-size: 60px;
+}
+
+#canvas {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1100px;
+  height: auto;
+}
+
+#error {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 60px;
+  display: none;
+}
+
+.hand {
+  cursor: pointer;
+}
+
+.say {
+  margin-left: -35px;
+  margin-bottom: 10px;
+  font-size: 30px;
+  letter-spacing: 1.5px;
+  word-spacing: 2px;
+  animation: animate 1s ease-in-out infinite alternate;
+  font-family: "Yellowtail", serif;
+}
+
+p {
+  margin-left: 140px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+  font-size: 25px;
+  animation: animate_1 1s ease-in-out infinite alternate;
+  letter-spacing: 1px;
+  color: #ac7cff;
+  font-family: "Delius Swash Caps", serif;
+}
+
+.say_ {
+  margin-left: -25px;
+  margin-bottom: 0px;
+  font-size: 21px;
+  /* letter-spacing: 0.5px; */
+  word-spacing: 0.7px;
+  font-weight: 400;
+  font-family: "Markazi Text", serif;
+}
+
+
+
+.space {
+  margin-right: 150px;
+}
+
+#message-box {
+  position: absolute;
+  margin-top: 450px;
+  animation: animate_2 1s ease-in-out infinite alternate;
+  font-family: "Ephesis", serif;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+
+
+@keyframes animate{
+  from{
+      text-shadow: 0 0 20px rgb(196, 255, 255);
+  }
+  to{
+      text-shadow: 0 0 30px rgb(196, 255, 255),
+                  0 0 10px rgb(196, 255, 255);
+  }
+}
+
+
+@keyframes animate_1{
+  from{
+      text-shadow: 0 0 20px #ac7cff;
+  }
+  to{
+      text-shadow: 0 0 30px #ac7cff,
+                  0 0 10px #ac7cff;
+  }
+}
+
+@keyframes animate_2{
+  from{
+      text-shadow: 0 0 20px #ff3e6f;
+  }
+  to{
+      text-shadow: 0 0 30px #ff3e6f,
+                  0 0 10px #ff3e6f;
+  }
+}
+
+@keyframes animate_3{
+  from{
+      text-shadow: 0 0 20px #ff2516;
+  }
+  to{
+      text-shadow: 0 0 30px #ff2516,
+                  0 0 10px #ff2516;
+  }
+}
+
+
+
+/* Media Queries for Responsive Design */
+
+/* For 915x412 and 914x412 */
+@media (max-width: 915px) and (max-height: 412px) {
+  #wrap {
+    width: 100%;
+    height: auto;
+  }
+
+  #text {
+    width: 1000px;
+    top: 100px;
+    font-size: 35px;
+  }
+
+  #code {
+    font-size: 25px;
+    line-height: 20px;
+  }
+
+  #clock-box {
+    font-size: 30px;
+    margin-bottom: 40px;
+    top: 70%;
+  }
+
+  #clock .digit {
+    font-size: 38px;
+    font-family: "Roboto Flex", serif;
+    font-weight: 200;
+  }
+
+  #message-box {
+    margin-top: 320px;
+    margin-left: 30px;
+    font-family: "Ephesis", serif;
+    word-spacing: 11px;
+    font-weight: 550;
+    font-size: 35px;
+  }
+}
+
+/* For 412x914 and 412x915 */
+@media (max-width: 412px) and (max-height: 915px) {
+  #wrap {
+    width: 100%;
+    height: auto;
+  }
+
+  #text {
+    width: 150px;
+    top: 20px;
+  }
+
+  #code {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  #clock-box {
+    font-size: 18px;
+    top: 60%;
+  }
+
+  #clock .digit {
+    font-size: 36px;
+  }
+
+  #message-box {
+    margin-top: 200px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+}
+
+
+
+
