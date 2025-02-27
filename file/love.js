@@ -1,4 +1,4 @@
-﻿(function(window){
+(function(window){
 
     function random(min, max) {
         return min + Math.floor(Math.random() * (max - min + 1));
@@ -121,20 +121,49 @@
         },
         drawHeart: function() {
             var ctx = this.tree.ctx, heart = this.heart;
-            var point = heart.point, color = heart.color, 
+            var point = heart.point, color = '#B01E28', // Set neon color to #B01E28
                 scale = heart.scale;
+        
+            // Beat effect: Calculate the current scale based on time with 1.5s pulse rate
+            var beatScale = 1 + 0.2 * Math.sin(Date.now() * 0.00133 * Math.PI); // 1.5s cycle
+        
+            // Apply the beat effect to the heart scale
+            var currentScale = scale * beatScale;
+        
+            // Neon effect: Draw multiple layers with increasing transparency and blur
+            ctx.save();
+            ctx.translate(point.x, point.y);
+            for (var i = 0; i < 5; i++) {
+                ctx.beginPath();
+                ctx.globalAlpha = 0.2 - i * 0.03;
+                ctx.shadowBlur = 10 + i * 5;
+                ctx.shadowColor = color;
+                ctx.moveTo(0, 0);
+                for (var j = 0; j < heart.figure.length; j++) {
+                    var p = heart.figure.get(j, currentScale);
+                    ctx.lineTo(p.x, -p.y);
+                }
+                ctx.closePath();
+                ctx.fill();
+            }
+            ctx.restore();
+        
+            // Draw the main heart
             ctx.save();
             ctx.fillStyle = color;
             ctx.translate(point.x, point.y);
             ctx.beginPath();
             ctx.moveTo(0, 0);
             for (var i = 0; i < heart.figure.length; i++) {
-                var p = heart.figure.get(i, scale);
+                var p = heart.figure.get(i, currentScale);
                 ctx.lineTo(p.x, -p.y);
             }
             ctx.closePath();
             ctx.fill();
             ctx.restore();
+        
+            
+        
         },
         drawCirle: function() {
             var ctx = this.tree.ctx, cirle = this.cirle;
@@ -146,7 +175,7 @@
             ctx.scale(scale, scale);
             ctx.beginPath();
             ctx.moveTo(0, 0);
-    	    ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+            ctx.arc(0, 0, radius, 0, 2 * Math.PI);
             ctx.closePath();
             ctx.fill();
             ctx.restore();
@@ -161,14 +190,14 @@
             ctx.translate(point.x, point.y);
             ctx.scale(scale, scale);
             ctx.moveTo(0, 0);
-    	    ctx.lineTo(15, 15);
-    	    ctx.lineTo(130, 15);
+            ctx.lineTo(15, 15);
+            ctx.lineTo(130, 15);
             ctx.stroke();
-
+    
             ctx.moveTo(0, 0);
-            ctx.scale(0.75, 0.75);
+            ctx.scale(0.85, 0.85);
             ctx.font = "12px,Verdana"; // 字号肿么没有用? (ˉ(∞)ˉ)
-            ctx.fillText("Click here:) ", 30, -5);
+            ctx.fillText("Click here:) ", 30, -8);
             ctx.fillText("Birthday Girl !", 28, 10);
             ctx.restore();
         },
