@@ -33,8 +33,8 @@ $(window).resize(function() {
 	};
 })(jQuery);
 
-function timeElapse(){
-    var startDate = new Date("2002-08-03T00:00:00"); // Fixed start date
+function timeElapse() {
+    var startDate = new Date("2002-03-03T00:00:00"); // Updated start date to 3rd March 2002
     var current = new Date();
     var seconds = (current - startDate) / 1000;
     var days = Math.floor(seconds / (3600 * 24));
@@ -48,13 +48,13 @@ function timeElapse(){
     if (minutes < 10) {
         minutes = "0" + minutes;
     }
-    seconds = seconds % 60;
+    seconds = Math.floor(seconds % 60); // Add seconds count
     if (seconds < 10) {
         seconds = "0" + seconds;
     }
-    var result = "Days <span class=\"digit\">" + days + "</span> Hours <span class=\"digit\">" + hours + "</span> Minutes <span class=\"digit\">" + minutes; 
+    var result = "Days <span class=\"digit\">" + days + "</span> Hours <span class=\"digit\">" + hours + "</span> Minutes <span class=\"digit\">" + minutes + "</span> Seconds <span class=\"digit\">" + seconds + "</span>"; 
     $("#clock").html(result);
 
-    var text = "The World Just Got Luckier Since";
+    var text = "The World Just Got Luckier From 💐";
     $("#message-box").html(text);
 }
