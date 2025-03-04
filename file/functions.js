@@ -55,6 +55,6 @@ function timeElapse() {
     var result = "Days <span class=\"digit\">" + days + "</span> Hours <span class=\"digit\">" + hours + "</span> Minutes <span class=\"digit\">" + minutes + "</span> Seconds <span class=\"digit\">" + seconds + "</span>"; 
     $("#clock").html(result);
 
-    var text = "The World Just Got Luckier From 💐";
+    var text = "The World Just Got Luckier From";
     $("#message-box").html(text);
 }
