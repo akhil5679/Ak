@@ -120,51 +120,52 @@
             this.setHeartScale(scale);
         },
         drawHeart: function() {
-            var ctx = this.tree.ctx, heart = this.heart;
-            var point = heart.point, color = '#B01E28', // Set neon color to #B01E28
-                scale = heart.scale;
-        
-            // Beat effect: Calculate the current scale based on time with 1.5s pulse rate
-            var beatScale = 1 + 0.2 * Math.sin(Date.now() * 0.00133 * Math.PI); // 1.5s cycle
-        
-            // Apply the beat effect to the heart scale
-            var currentScale = scale * beatScale;
-        
-            // Neon effect: Draw multiple layers with increasing transparency and blur
-            ctx.save();
-            ctx.translate(point.x, point.y);
-            for (var i = 0; i < 5; i++) {
-                ctx.beginPath();
-                ctx.globalAlpha = 0.2 - i * 0.03;
-                ctx.shadowBlur = 10 + i * 5;
-                ctx.shadowColor = color;
-                ctx.moveTo(0, 0);
-                for (var j = 0; j < heart.figure.length; j++) {
-                    var p = heart.figure.get(j, currentScale);
-                    ctx.lineTo(p.x, -p.y);
-                }
-                ctx.closePath();
-                ctx.fill();
-            }
-            ctx.restore();
-        
-            // Draw the main heart
-            ctx.save();
-            ctx.fillStyle = color;
-            ctx.translate(point.x, point.y);
-            ctx.beginPath();
-            ctx.moveTo(0, 0);
-            for (var i = 0; i < heart.figure.length; i++) {
-                var p = heart.figure.get(i, currentScale);
-                ctx.lineTo(p.x, -p.y);
-            }
-            ctx.closePath();
-            ctx.fill();
-            ctx.restore();
-        
-            
-        
-        },
+    var ctx = this.tree.ctx, heart = this.heart;
+    var point = heart.point, color = '#B01E28',
+        scale = heart.scale;
+    
+    // Infinite scaling using sine wave
+    var time = Date.now() * 0.002;  // Controls speed of scaling
+    var beatScale = 1 + 0.15 * Math.sin(time * Math.PI); // Oscillate scale between 0.85x to 1.15x
+    
+    var currentScale = scale * beatScale;
+    
+    ctx.save();
+    ctx.translate(point.x, point.y);
+
+    // Neon Glow Effect (Multiple Layers)
+    for (var i = 0; i < 5; i++) {
+        ctx.beginPath();
+        ctx.globalAlpha = 0.2 - i * 0.05;
+        ctx.shadowBlur = 5 + i;
+        ctx.shadowColor = "#d6a3b3";
+        ctx.moveTo(0, 0);
+        for (var j = 0; j < heart.figure.length; j++) {
+            var p = heart.figure.get(j, currentScale);
+            ctx.lineTo(p.x, -p.y);
+        }
+        ctx.closePath();
+        ctx.fill();
+    }
+    ctx.restore();
+
+    // Draw the main heart
+    ctx.save();
+    ctx.fillStyle = color;
+    ctx.translate(point.x, point.y);
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    for (var i = 0; i < heart.figure.length; i++) {
+        var p = heart.figure.get(i, currentScale);
+        ctx.lineTo(p.x, -p.y);
+    }
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+
+    // Request the next animation frame
+    requestAnimationFrame(() => this.drawHeart());
+},
         drawCirle: function() {
             var ctx = this.tree.ctx, cirle = this.cirle;
             var point = cirle.point, color = cirle.color, 
