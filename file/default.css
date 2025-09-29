@@ -4,11 +4,13 @@ body {
   background-image: url('../img2.png');
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   font-size: 14px;
   font-family: sans-serif;
   color: rgb(255, 255, 255);
   overflow: auto;
   backdrop-filter: blur(3px);
+  min-height: 100vh;
 }
 
 a {
@@ -18,6 +20,7 @@ a {
 
 #main {
   width: 100%;
+  min-height: 100vh;
 }
 
 #wrap {
@@ -27,6 +30,8 @@ a {
   max-width: 1100px;
   height: auto;
   margin-top: 10px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 #text {
@@ -37,6 +42,7 @@ a {
   top: 70%;
   position: absolute;
   transform: translateX(-50%);
+  transition: all 0.3s ease;
 }
 
 #code {
@@ -48,6 +54,7 @@ a {
   line-height: 25px;
   font-size: larger;
   font-weight: bolder;
+  transition: all 0.3s ease;
 }
 
 #clock-box {
@@ -58,6 +65,7 @@ a {
   font-size: 35px;
   font-weight: 600;
   display: none;
+  transition: all 0.3s ease;
 }
 
 #clock-box a {
@@ -71,6 +79,7 @@ a {
   animation: animate_3 1s ease-in-out infinite alternate;
   font-family: "Moon Dance", serif;
   font-weight: 400;
+  transition: all 0.3s ease;
 }
 
 #clock .digit {
@@ -84,6 +93,7 @@ a {
   width: 100%;
   max-width: 1100px;
   height: auto;
+  transition: all 0.3s ease;
 }
 
 #error {
@@ -105,6 +115,7 @@ a {
   word-spacing: 2px;
   animation: animate 1s ease-in-out infinite alternate;
   font-family: "Yellowtail", serif;
+  transition: all 0.3s ease;
 }
 
 p {
@@ -117,6 +128,7 @@ p {
   color: #ac7cff;
   font-family: "Delius Swash Caps", serif;
   padding-bottom: 50px;
+  transition: all 0.3s ease;
 }
 
 .say_ {
@@ -124,15 +136,12 @@ p {
   margin-bottom: -150px;
   text-align: center;
   font-size: 25px;
-  /* letter-spacing: 0.5px; */
   word-spacing: 0.7px;
   font-weight: 600;
   font-family: "Markazi Text", serif;
   color: #ff78ae;
+  transition: all 0.3s ease;
 }
-
-
-
 
 .space {
   margin-right: 150px;
@@ -147,9 +156,8 @@ p {
   font-size: 55px;
   word-spacing: 4.5px;
   font-weight: 600;
+  transition: all 0.3s ease;
 }
-
-
 
 @keyframes animate{
   from{
@@ -160,7 +168,6 @@ p {
                   0 0 10px rgb(196, 255, 255);
   }
 }
-
 
 @keyframes animate_1{
   from{
@@ -192,284 +199,390 @@ p {
   }
 }
 
+/* Responsive Design - Mobile First Approach */
 
+/* Extra Small Devices (phones, 320px and up) */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
 
-/* Media Queries for Responsive Design */
-
-/* For 915x412 and 914x412 */
-@media (max-width: 915px) and (max-height: 412px) {
   #wrap {
-    width: 100%;
-    height: auto;
+    padding: 0 10px;
+    margin-top: 5px;
   }
 
   #text {
-    width: 100px;
-    top: 100px;
-    font-size: 15px;
-  }
-
-  #code {
-    font-size: 15px;
-    position: absolute;
-    margin-left: -170px;
-    margin-top: 20px;
-    line-height: 20px;
-    width: 500px;
-  }
-
-  #clock-box {
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 40px;
-    top: 70%;
-  }
-
-  #clock .digit {
-    font-size: 38px;
-    font-family: "Roboto Flex", serif;
-    font-weight: 200;
-  }
-
-  .say {
-    margin-left: -250px;
-    margin-bottom: 10px;
-    font-size: 30px;
-    letter-spacing: 1.5px;
-    word-spacing: 2px; 
-    animation: animate 1s ease-in-out infinite alternate;
-    font-family: "Yellowtail", serif;
-  }
-  
-  p {
-    margin-left: 60px;
-    margin-top: 25px;
-    margin-bottom: -30px;
-    font-size: 25px;
-    animation: animate_1 1s ease-in-out infinite alternate;
-    letter-spacing: 1px;
-    color: #ac7cff;
-    font-family: "Delius Swash Caps", serif;
-  }
-  
-  .say_ {
-    margin-left: -25px;
-    margin-bottom: -200px;
-    font-size: 20px;
-    /* letter-spacing: 0.5px; */
-    word-spacing: 0.7px;
-    width: 50px;
-    font-weight: 600;
-    color: #ff78ae;
-    font-family: "Markazi Text", serif;
-  }
-
-  
-
-  #message-box {
-    margin-top: 320px;
-    margin-left: 30px;
-    font-family: "Ephesis", serif;
-    word-spacing: 11px;
-    font-weight: 600;
-    font-size: 35px;
-  }
-}
-
-@keyframes animate{
-  from{
-      text-shadow: 0 0 20px rgb(196, 255, 255);
-  }
-  to{
-      text-shadow: 0 0 30px rgb(196, 255, 255),
-                  0 0 10px rgb(196, 255, 255);
-  }
-}
-
-
-@keyframes animate_1{
-  from{
-      text-shadow: 0 0 20px #ac7cff;
-  }
-  to{
-      text-shadow: 0 0 30px #ac7cff,
-                  0 0 10px #ac7cff;
-  }
-}
-
-
-
-/* For 844x390 */
-@media (max-width: 844px) and (max-height: 390px) {
-  #wrap {
-    width: 100%;
-    height: auto;
-  }
-
-  #text {
-    width: 100px;
-    top: 100px;
-    font-size: 15px;
-  }
-
-  #canvas {
-    width: 100%;
-    height: auto;
-  }
-
-  #code {
-    font-size: 15px;
-    position: absolute;
-    margin-left: -170px;
-    margin-top: 20px;
-    line-height: 20px;
-    width: 500px;
-  }
-
-  #clock {
-    margin-left: -200px;
-    margin-bottom: -65px;
-    margin-top: 10px;
-    animation: animate_3 1s ease-in-out infinite alternate;
-    font-family: "Moon Dance", serif;
-    font-weight: 400;
-  }
-
-  #clock-box {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 30px;
-    top: 70%;
-  }
-
-  #clock .digit {
-    font-size: 30px;
-    font-family: "Roboto Flex", serif;
-    font-weight: 200;
-  }
-
-  .say {
-    margin-left: -250px;
-    margin-bottom: 10px;
-    font-size: 30px;
-    letter-spacing: 1.5px;
-    word-spacing: 2px; 
-    animation: animate 1s ease-in-out infinite alternate;
-    font-family: "Yellowtail", serif;
-  }
-  
-  p {
-    margin-left:-50px;
-    margin-top: 25px;
-    margin-bottom: -30px;
-    font-size: 25px;
-    animation: animate_1 1s ease-in-out infinite alternate;
-    letter-spacing: 1px;
-    color: #ac7cff;
-    font-family: "Delius Swash Caps", serif;
-  }
-  
-  .say_ {
-    margin-left: 50px;
-    margin-bottom: -100px;
-    font-size: 20px;
-    /* letter-spacing: 0.5px; */
-    word-spacing: 0.7px;
-    width: 50px;
-    font-weight: 600;
-    color: #ff78ae;
-    font-family: "Markazi Text", serif;
-  }
-
-  #message-box {
-    margin-top: 320px;
-    margin-left: 30px;
-    font-family: "Ephesis", serif;
-    word-spacing: 11px;
-    font-weight: 600;
-    font-size: 35px;
-  }
-}
-
-@keyframes animate{
-  from{
-      text-shadow: 0 0 20px rgb(196, 255, 255);
-  }
-  to{
-      text-shadow: 0 0 30px rgb(196, 255, 255),
-                  0 0 10px rgb(196, 255, 255);
-  }
-}
-
-
-@keyframes animate_1{
-  from{
-      text-shadow: 0 0 20px #ac7cff;
-  }
-  to{
-      text-shadow: 0 0 30px #ac7cff,
-                  0 0 10px #ac7cff;
-  }
-}
-
-
-/* For 412x914 and 412x915 */
-@media (max-width: 412px) and (max-height: 915px) {
-  #wrap {
-    width: 100%;
-    height: auto;
-  }
-
-
-  
-  #text {
-    width: 150px;
-    top: 20px;
+    width: 90%;
+    max-width: none;
+    left: 50%;
+    top: 15%;
+    transform: translateX(-50%);
+    font-size: 12px;
   }
 
   #code {
     font-size: 12px;
+    position: relative;
+    margin-left: 0;
+    margin-top: 20px;
     line-height: 18px;
-    margin-top:-532px;
-  }
-  #canvas {
-    margin: 0 auto;
     width: 100%;
-    max-width: 1100px;
-    height: auto;
-    
+    text-align: center;
   }
 
   #clock-box {
-    font-size: 30px;
-    top: -150px;
-    margin-left:110px;
+    position: relative;
+    left: 50%;
+    top: auto;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  #clock {
+    margin-left: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  #clock .digit {
+    font-size: 20px;
+  }
+
+  .say {
+    margin-left: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+  }
+  
+  p {
+    margin-left: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  
+  .say_ {
+    margin-left: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    text-align: center;
+    word-spacing: 0.5px;
+    width: 100%;
+  }
+
+  #message-box {
+    position: relative;
+    margin-top: 20px;
+    margin-left: 0;
+    font-size: 24px;
+    word-spacing: 2px;
+    text-align: center;
+  }
+
+  #canvas {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+  }
+}
+
+/* Small Devices (landscape phones, 481px and up) */
+@media (min-width: 481px) and (max-width: 768px) {
+  #wrap {
+    padding: 0 15px;
+  }
+
+  #text {
+    width: 80%;
+    left: 50%;
+    top: 20%;
+    transform: translateX(-50%);
+  }
+
+  #code {
+    font-size: 14px;
+    position: relative;
+    margin-left: 0;
+    margin-top: 30px;
+    line-height: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  #clock-box {
+    position: relative;
+    left: 50%;
+    top: auto;
+    transform: translateX(-50%);
+    font-size: 24px;
+    margin: 30px 0;
+    text-align: center;
+  }
+
+  #clock {
+    margin-left: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  #clock .digit {
+    font-size: 28px;
+  }
+
+  .say {
+    margin-left: 0;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    margin-left: 0;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  
+  .say_ {
+    margin-left: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+  }
+
+  #message-box {
+    position: relative;
+    margin-top: 30px;
+    margin-left: 0;
+    font-size: 32px;
+    word-spacing: 3px;
+    text-align: center;
+  }
+
+  #canvas {
+    width: 100%;
+    height: 400px;
+    margin-top: 30px;
+  }
+}
+
+/* Medium Devices (tablets, 769px and up) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #wrap {
+    padding: 0 20px;
+  }
+
+  #text {
+    width: 70%;
+    left: 35%;
+    top: 50%;
+  }
+
+  #code {
+    font-size: 15px;
+    margin-top: -250px;
+    margin-left: -300px;
+    line-height: 22px;
+  }
+
+  #clock-box {
+    font-size: 28px;
+    top: 75%;
+  }
+
+  #clock {
+    margin-left: -180px;
   }
 
   #clock .digit {
     font-size: 36px;
   }
 
-  #message-box {
-    margin-top: -250px;
-    font-size: 35px;
-    margin-left:-10px;
-    font-weight: 400;
+  .say {
+    margin-left: -30px;
+    font-size: 32px;
   }
-  .say{
-    padding-left:150px;
+  
+  p {
+    margin-left: 180px;
+    font-size: 26px;
   }
-  .say_{
+  
+  .say_ {
     margin-left: 200px;
-    margin-bottom: -450px;
-    text-align: center;
-    font-size: 25px;
-    font-weight: 600;
-    font-family: "Markazi Text", serif;
-    color: #ff78ae;
+    font-size: 22px;
+    margin-bottom: -120px;
   }
 
+  #message-box {
+    margin-top: 350px;
+    margin-left: -80px;
+    font-size: 45px;
+    word-spacing: 4px;
+  }
+
+  #canvas {
+    width: 100%;
+    height: 500px;
+  }
 }
 
+/* Large Devices (desktops, 1025px and up) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  #code {
+    font-size: 16px;
+    margin-top: -320px;
+    margin-left: -400px;
+  }
 
+  #clock-box {
+    font-size: 32px;
+  }
 
+  #clock {
+    margin-left: -220px;
+  }
+
+  #clock .digit {
+    font-size: 42px;
+  }
+
+  .say {
+    font-size: 36px;
+  }
+  
+  p {
+    margin-left: 220px;
+    font-size: 28px;
+  }
+  
+  .say_ {
+    margin-left: 250px;
+    font-size: 24px;
+  }
+
+  #message-box {
+    margin-top: 400px;
+    margin-left: -90px;
+    font-size: 50px;
+  }
+}
+
+/* Extra Large Devices (large desktops, 1201px and up) */
+@media (min-width: 1201px) {
+  /* Original desktop styles apply */
+}
+
+/* Landscape Orientation Adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  #text {
+    top: 10%;
+  }
+
+  #code {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  #clock-box {
+    font-size: 18px;
+    margin: 15px 0;
+  }
+
+  #clock .digit {
+    font-size: 22px;
+  }
+
+  .say {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+  
+  p {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    padding-bottom: 15px;
+  }
+  
+  .say_ {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  #message-box {
+    font-size: 26px;
+    margin-top: 15px;
+    word-spacing: 2px;
+  }
+
+  #canvas {
+    height: 250px;
+    margin-top: 15px;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Ensure canvas responsiveness */
+@media (max-width: 1100px) {
+  #canvas {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Fine-tune for very small screens */
+@media (max-width: 320px) {
+  body {
+    font-size: 11px;
+  }
+
+  .say {
+    font-size: 18px;
+  }
+  
+  p {
+    font-size: 16px;
+  }
+  
+  .say_ {
+    font-size: 14px;
+  }
+
+  #message-box {
+    font-size: 20px;
+  }
+
+  #clock-box {
+    font-size: 14px;
+  }
+
+  #clock .digit {
+    font-size: 18px;
+  }
+}
