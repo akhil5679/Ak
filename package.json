@@ -1,0 +1,16 @@
+{
+  "name": "ak",
+  "version": "1.0.0",
+  "description": "A birthday greeting website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server -c-1 -p 3000",
+    "start": "http-server -c-1 -p 3000"
+  },
+  "keywords": ["birthday", "greeting", "animation"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
