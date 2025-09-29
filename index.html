@@ -25,87 +25,12 @@
         }
     </script>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            height: 100%;
-            width: 100%;
-        }
-        #main {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-        }
-        #wrap {
-            position: relative;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 1100px;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+        /* Additional responsive canvas styles */
         #canvas {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
-            display: block;
-        }
-        #text {
-            color: #fff;
-            font-size: 24px;
-            position: relative;
-        }
-        #clock-box {
-            color: #fff;
-            font-size: 35px;
-            font-weight: 600;
-            position: relative;
-        }
-        
-        /* Mobile Responsive Styles */
-        @media (max-width: 768px) {
-            #text {
-                font-size: 16px;
-            }
-            #clock-box {
-                font-size: 24px;
-            }
-            #wrap {
-                padding: 10px;
-            }
-            #canvas {
-                height: 300px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            #wrap {
-                padding: 5px;
-            }
-            #text {
-                font-size: 14px;
-            }
-            #clock-box {
-                font-size: 18px;
-            }
-            #canvas {
-                height: 250px;
-            }
-        }
-        
-        /* Tablet Styles */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            #text {
-                font-size: 20px;
-            }
-            #clock-box {
-                font-size: 28px;
-            }
-            #canvas {
-                height: 400px;
-            }
+            width: 100% !important;
+            height: auto !important;
+            max-width: 100% !important;
+            display: block !important;
         }
     </style>
 </head>
@@ -148,17 +73,35 @@
             
             // Responsive canvas sizing
             var updateCanvasSize = function() {
-                var containerWidth = canvas.parent().width();
-                var width = Math.min(containerWidth, 1100);
-                var height = Math.min(window.innerHeight * 0.6, 680);
+                var containerWidth = Math.min(canvas.parent().width(), window.innerWidth - 40);
+                var width = containerWidth;
+                var height;
                 
-                // Adjust for mobile
+                // Responsive height based on screen size
                 if (window.innerWidth <= 768) {
-                    height = Math.min(window.innerHeight * 0.4, 400);
+                    if (window.innerWidth <= 480) {
+                        height = 250;
+                    } else {
+                        height = 350;
+                    }
+                } else if (window.innerWidth <= 1024) {
+                    height = 450;
+                } else if (window.innerWidth <= 1200) {
+                    height = 550;
+                } else {
+                    height = 680;
                 }
+                
+                // Ensure minimum dimensions
+                width = Math.max(width, 300);
+                height = Math.max(height, 200);
                 
                 canvas.attr("width", width);
                 canvas.attr("height", height);
+                canvas.css({
+                    'width': width + 'px',
+                    'height': height + 'px'
+                });
                 
                 return { width: width, height: height };
             };
@@ -170,7 +113,7 @@
             // Update canvas size on window resize
             $(window).resize(function() {
                 var newDimensions = updateCanvasSize();
-                // Reinitialize if size changed significantly
+                // Reinitialize tree if size changed significantly
                 if (Math.abs(newDimensions.width - width) > 50 || Math.abs(newDimensions.height - height) > 50) {
                     location.reload();
                 }
@@ -182,7 +125,7 @@
             var opts = {
                 seed: {
                     x: width / 2 - 20,
-                    color: "rgb(190, 26, 37)",
+                    color: "rgb(190, 26, 37)", 
                     scale: Math.min(2, width / 550) // Responsive scaling
                 },
                 branch: [
@@ -204,7 +147,7 @@
                     ]] 
                 ],
                 bloom: {
-                    num: 700,
+                    num: Math.min(700, Math.max(200, width)),
                     width: width,
                     height: height,
                 },
@@ -214,6 +157,7 @@
                     speed: 10,
                 }
             }
+            
             var tree = new Tree(canvas[0], width, height, opts);
             var seed = tree.seed;
             var foot = tree.footer;

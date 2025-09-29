@@ -8,9 +8,15 @@ body {
   font-size: 14px;
   font-family: sans-serif;
   color: rgb(255, 255, 255);
-  overflow: auto;
+  overflow-x: hidden;
   backdrop-filter: blur(3px);
   min-height: 100vh;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 a {
@@ -21,6 +27,7 @@ a {
 #main {
   width: 100%;
   min-height: 100vh;
+  position: relative;
 }
 
 #wrap {
@@ -29,43 +36,35 @@ a {
   width: 100%;
   max-width: 1100px;
   height: auto;
-  margin-top: 10px;
-  padding: 0 20px;
+  padding: 20px;
   box-sizing: border-box;
 }
 
 #text {
   width: 100%;
-  max-width: 272px;
   height: auto;
-  left: 30%;
-  top: 70%;
-  position: absolute;
-  transform: translateX(-50%);
-  transition: all 0.3s ease;
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 #code {
-  display: none;
   color: rgb(196, 255, 255);
   font-size: 16px;
-  margin-top: -350px;
-  margin-left: -450px;
   line-height: 25px;
-  font-size: larger;
   font-weight: bolder;
-  transition: all 0.3s ease;
+  text-align: center;
+  margin: 20px 0;
+  padding: 0 10px;
 }
 
 #clock-box {
-  position: absolute;
-  left: 50%;
-  top: 80%;
-  transform: translateX(-50%);
+  position: relative;
+  text-align: center;
   font-size: 35px;
   font-weight: 600;
+  margin: 30px 0;
   display: none;
-  transition: all 0.3s ease;
 }
 
 #clock-box a {
@@ -74,12 +73,10 @@ a {
 }
 
 #clock {
-  margin-left: -250px;
-  margin-bottom: -65px;
   animation: animate_3 1s ease-in-out infinite alternate;
   font-family: "Moon Dance", serif;
   font-weight: 400;
-  transition: all 0.3s ease;
+  text-align: center;
 }
 
 #clock .digit {
@@ -93,7 +90,7 @@ a {
   width: 100%;
   max-width: 1100px;
   height: auto;
-  transition: all 0.3s ease;
+  display: block;
 }
 
 #error {
@@ -108,39 +105,34 @@ a {
 }
 
 .say {
-  margin-left: -45px;
-  margin-bottom: 1000px;
   font-size: 40px;
   letter-spacing: 1.5px;
   word-spacing: 2px;
   animation: animate 1s ease-in-out infinite alternate;
   font-family: "Yellowtail", serif;
-  transition: all 0.3s ease;
+  text-align: center;
+  margin: 10px 0;
 }
 
 p {
-  margin-left: 240px;
-  margin-top: 35px;
-  margin-bottom: 0px;
   font-size: 30px;
   animation: animate_1 1s ease-in-out infinite alternate;
   letter-spacing: 1px;
   color: #ac7cff;
   font-family: "Delius Swash Caps", serif;
-  padding-bottom: 50px;
-  transition: all 0.3s ease;
+  text-align: center;
+  margin: 15px 0;
+  padding: 0;
 }
 
 .say_ {
-  margin-left: 275px;
-  margin-bottom: -150px;
   text-align: center;
   font-size: 25px;
   word-spacing: 0.7px;
   font-weight: 600;
   font-family: "Markazi Text", serif;
   color: #ff78ae;
-  transition: all 0.3s ease;
+  margin: 8px 0;
 }
 
 .space {
@@ -148,15 +140,14 @@ p {
 }
 
 #message-box {
-  position: absolute;
-  margin-top: 450px;
-  margin-left: -100px;
+  position: relative;
   animation: animate_2 1s ease-in-out infinite alternate;
   font-family: "Ephesis", serif;
   font-size: 55px;
   word-spacing: 4.5px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  text-align: center;
+  margin: 30px 0;
 }
 
 @keyframes animate{
@@ -199,139 +190,80 @@ p {
   }
 }
 
-/* Responsive Design - Mobile First Approach */
-
-/* Extra Small Devices (phones, 320px and up) */
+/* Mobile First - Extra Small Devices (phones, up to 480px) */
 @media (max-width: 480px) {
   body {
     font-size: 12px;
   }
 
   #wrap {
-    padding: 0 10px;
-    margin-top: 5px;
-  }
-
-  #text {
-    width: 90%;
-    max-width: none;
-    left: 50%;
-    top: 15%;
-    transform: translateX(-50%);
-    font-size: 12px;
+    padding: 10px;
   }
 
   #code {
     font-size: 12px;
-    position: relative;
-    margin-left: 0;
-    margin-top: 20px;
     line-height: 18px;
-    width: 100%;
-    text-align: center;
+    margin: 15px 0;
   }
 
   #clock-box {
-    position: relative;
-    left: 50%;
-    top: auto;
-    transform: translateX(-50%);
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 18px;
     margin: 20px 0;
-    text-align: center;
-  }
-
-  #clock {
-    margin-left: 0;
-    margin-bottom: 0;
-    text-align: center;
   }
 
   #clock .digit {
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .say {
-    margin-left: 0;
-    margin-bottom: 10px;
-    font-size: 20px;
-    text-align: center;
+    font-size: 18px;
     letter-spacing: 1px;
     word-spacing: 1px;
+    margin: 8px 0;
   }
   
   p {
-    margin-left: 0;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    font-size: 18px;
-    text-align: center;
-    padding-bottom: 20px;
+    font-size: 16px;
+    margin: 10px 0;
   }
   
   .say_ {
-    margin-left: 0;
-    margin-bottom: 10px;
-    font-size: 16px;
-    text-align: center;
+    font-size: 14px;
     word-spacing: 0.5px;
-    width: 100%;
+    margin: 6px 0;
   }
 
   #message-box {
-    position: relative;
-    margin-top: 20px;
-    margin-left: 0;
-    font-size: 24px;
+    font-size: 22px;
     word-spacing: 2px;
-    text-align: center;
+    margin: 20px 0;
   }
 
   #canvas {
     width: 100%;
-    height: 300px;
-    margin-top: 20px;
+    height: 250px !important;
+  }
+
+  .space {
+    margin-right: 0;
   }
 }
 
-/* Small Devices (landscape phones, 481px and up) */
+/* Small Devices (landscape phones, 481px to 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   #wrap {
-    padding: 0 15px;
-  }
-
-  #text {
-    width: 80%;
-    left: 50%;
-    top: 20%;
-    transform: translateX(-50%);
+    padding: 15px;
   }
 
   #code {
     font-size: 14px;
-    position: relative;
-    margin-left: 0;
-    margin-top: 30px;
     line-height: 20px;
-    width: 100%;
-    text-align: center;
+    margin: 20px 0;
   }
 
   #clock-box {
-    position: relative;
-    left: 50%;
-    top: auto;
-    transform: translateX(-50%);
     font-size: 24px;
-    margin: 30px 0;
-    text-align: center;
-  }
-
-  #clock {
-    margin-left: 0;
-    margin-bottom: 0;
-    text-align: center;
+    margin: 25px 0;
   }
 
   #clock .digit {
@@ -339,71 +271,51 @@ p {
   }
 
   .say {
-    margin-left: 0;
-    font-size: 28px;
-    text-align: center;
-    margin-bottom: 15px;
+    font-size: 24px;
+    margin: 10px 0;
   }
   
   p {
-    margin-left: 0;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    font-size: 22px;
-    text-align: center;
-    padding-bottom: 30px;
+    font-size: 20px;
+    margin: 12px 0;
   }
   
   .say_ {
-    margin-left: 0;
-    margin-bottom: 15px;
     font-size: 18px;
-    text-align: center;
-    width: 100%;
+    margin: 8px 0;
   }
 
   #message-box {
-    position: relative;
-    margin-top: 30px;
-    margin-left: 0;
     font-size: 32px;
     word-spacing: 3px;
-    text-align: center;
+    margin: 25px 0;
   }
 
   #canvas {
     width: 100%;
-    height: 400px;
-    margin-top: 30px;
+    height: 350px !important;
+  }
+
+  .space {
+    margin-right: 50px;
   }
 }
 
-/* Medium Devices (tablets, 769px and up) */
+/* Medium Devices (tablets, 769px to 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   #wrap {
-    padding: 0 20px;
-  }
-
-  #text {
-    width: 70%;
-    left: 35%;
-    top: 50%;
+    padding: 20px;
   }
 
   #code {
     font-size: 15px;
-    margin-top: -250px;
-    margin-left: -300px;
     line-height: 22px;
+    margin: 25px 0;
   }
 
   #clock-box {
     font-size: 28px;
-    top: 75%;
-  }
-
-  #clock {
-    margin-left: -180px;
+    margin: 30px 0;
   }
 
   #clock .digit {
@@ -411,48 +323,47 @@ p {
   }
 
   .say {
-    margin-left: -30px;
     font-size: 32px;
+    margin: 12px 0;
   }
   
   p {
-    margin-left: 180px;
     font-size: 26px;
+    margin: 15px 0;
   }
   
   .say_ {
-    margin-left: 200px;
     font-size: 22px;
-    margin-bottom: -120px;
+    margin: 10px 0;
   }
 
   #message-box {
-    margin-top: 350px;
-    margin-left: -80px;
     font-size: 45px;
     word-spacing: 4px;
+    margin: 30px 0;
   }
 
   #canvas {
     width: 100%;
-    height: 500px;
+    height: 450px !important;
+  }
+
+  .space {
+    margin-right: 100px;
   }
 }
 
-/* Large Devices (desktops, 1025px and up) */
+/* Large Devices (desktops, 1025px to 1200px) */
 @media (min-width: 1025px) and (max-width: 1200px) {
   #code {
     font-size: 16px;
-    margin-top: -320px;
-    margin-left: -400px;
+    line-height: 24px;
+    margin: 30px 0;
   }
 
   #clock-box {
     font-size: 32px;
-  }
-
-  #clock {
-    margin-left: -220px;
+    margin: 35px 0;
   }
 
   #clock .digit {
@@ -461,77 +372,156 @@ p {
 
   .say {
     font-size: 36px;
+    margin: 15px 0;
   }
   
   p {
-    margin-left: 220px;
     font-size: 28px;
+    margin: 18px 0;
   }
   
   .say_ {
-    margin-left: 250px;
     font-size: 24px;
+    margin: 12px 0;
   }
 
   #message-box {
-    margin-top: 400px;
-    margin-left: -90px;
     font-size: 50px;
+    margin: 35px 0;
+  }
+
+  #canvas {
+    width: 100%;
+    height: 550px !important;
+  }
+
+  .space {
+    margin-right: 120px;
   }
 }
 
 /* Extra Large Devices (large desktops, 1201px and up) */
 @media (min-width: 1201px) {
-  /* Original desktop styles apply */
-}
-
-/* Landscape Orientation Adjustments */
-@media (max-width: 768px) and (orientation: landscape) {
-  #text {
-    top: 10%;
-  }
-
   #code {
-    margin-top: 10px;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 16px;
+    line-height: 25px;
+    margin: 30px 0;
   }
 
   #clock-box {
-    font-size: 18px;
+    font-size: 35px;
+    margin: 40px 0;
+  }
+
+  #clock .digit {
+    font-size: 50px;
+  }
+
+  .say {
+    font-size: 40px;
+    margin: 15px 0;
+  }
+  
+  p {
+    font-size: 30px;
+    margin: 20px 0;
+  }
+  
+  .say_ {
+    font-size: 25px;
+    margin: 12px 0;
+  }
+
+  #message-box {
+    font-size: 55px;
+    margin: 40px 0;
+  }
+
+  #canvas {
+    width: 100%;
+    height: 680px !important;
+  }
+
+  .space {
+    margin-right: 150px;
+  }
+}
+
+/* Landscape Orientation for Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  #code {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 10px 0;
+  }
+
+  #clock-box {
+    font-size: 16px;
     margin: 15px 0;
   }
 
   #clock .digit {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .say {
-    font-size: 22px;
-    margin-bottom: 8px;
+    font-size: 20px;
+    margin: 6px 0;
   }
   
   p {
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 8px;
-    padding-bottom: 15px;
+    font-size: 16px;
+    margin: 8px 0;
   }
   
   .say_ {
-    font-size: 15px;
-    margin-bottom: 8px;
+    font-size: 14px;
+    margin: 5px 0;
   }
 
   #message-box {
-    font-size: 26px;
-    margin-top: 15px;
+    font-size: 24px;
     word-spacing: 2px;
+    margin: 15px 0;
   }
 
   #canvas {
-    height: 250px;
-    margin-top: 15px;
+    height: 200px !important;
+  }
+}
+
+/* Very Small Screens */
+@media (max-width: 320px) {
+  body {
+    font-size: 11px;
+  }
+
+  .say {
+    font-size: 16px;
+  }
+  
+  p {
+    font-size: 14px;
+  }
+  
+  .say_ {
+    font-size: 12px;
+  }
+
+  #message-box {
+    font-size: 18px;
+  }
+
+  #clock-box {
+    font-size: 16px;
+  }
+
+  #clock .digit {
+    font-size: 20px;
+  }
+
+  #canvas {
+    height: 200px !important;
   }
 }
 
@@ -543,46 +533,14 @@ p {
   }
 }
 
-/* Smooth transitions for all interactive elements */
-* {
-  transition: all 0.3s ease;
+/* Ensure no horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
 }
 
-/* Ensure canvas responsiveness */
-@media (max-width: 1100px) {
-  #canvas {
-    max-width: 100%;
-    height: auto;
-  }
-}
-
-/* Fine-tune for very small screens */
-@media (max-width: 320px) {
-  body {
-    font-size: 11px;
-  }
-
-  .say {
-    font-size: 18px;
-  }
-  
-  p {
-    font-size: 16px;
-  }
-  
-  .say_ {
-    font-size: 14px;
-  }
-
-  #message-box {
-    font-size: 20px;
-  }
-
-  #clock-box {
-    font-size: 14px;
-  }
-
-  #clock .digit {
-    font-size: 18px;
-  }
+/* Responsive canvas container */
+#canvas {
+  max-width: 100%;
+  height: auto;
 }
